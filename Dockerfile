@@ -29,6 +29,7 @@ RUN curl -sS https://getcomposer.org/installer | php && \
 COPY config /root/server_config
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 COPY docker-entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
 
 EXPOSE 80 22
 ENTRYPOINT ["/entrypoint.sh"]
