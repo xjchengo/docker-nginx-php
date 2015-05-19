@@ -5,6 +5,7 @@ RUN echo "deb http://nginx.org/packages/mainline/debian/ jessie nginx" >> /etc/a
 
 ENV NGINX_VERSION 1.9.0-1~jessie
 
+COPY sources.list /etc/apt/sources.list
 RUN apt-get update && \
     apt-get install -y ca-certificates \
         nginx=${NGINX_VERSION} \
