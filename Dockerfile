@@ -6,14 +6,30 @@ RUN echo "deb http://nginx.org/packages/mainline/debian/ jessie nginx" >> /etc/a
 
 ENV NGINX_VERSION 1.9.0-1~jessie
 
+# install utils
 RUN apt-get update && \
     apt-get install -y ca-certificates \
+        curl \
+        git \
         nginx=${NGINX_VERSION} \
-        supervisor && \
+        openssh-server \
+        supervisor \
+        unzip \
+        vim && \
     rm -rf /var/lib/apt/lists/*
 
-RUN touch /etc/supervisor/conf.d/supervisord.conf
+# install php modules
+RUN apt-get update && apt-get install -y libmcrypt-dev \
+    && docker-php-ext-install mcrypt \
+    && docker-php-ext-install mbstring
+
+RUN curl -sS https://getcomposer.org/installer | php && \
+    mv composer.phar /usr/local/bin/composer
+
+COPY config /root/server_config
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+COPY docker-entrypoint.sh /entrypoint.sh
 
 EXPOSE 80 22
+ENTRYPOINT ["/entrypoint.sh"]
 CMD ["supervisord"]
