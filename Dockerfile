@@ -1,4 +1,5 @@
 FROM php:fpm
+MAINTAINER xjchengo
 
 COPY sources.list /etc/apt/sources.list
 RUN apt-key adv --keyserver hkp://pgp.mit.edu:80 --recv-keys 573BFD6B3D8FBC641079A6ABABF5BD827BD9BF62
@@ -29,7 +30,6 @@ RUN curl -sS https://getcomposer.org/installer | php && \
 COPY config /root/server_config
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 COPY docker-entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
 
 EXPOSE 80 22
 ENTRYPOINT ["/entrypoint.sh"]
