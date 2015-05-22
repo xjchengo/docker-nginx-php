@@ -32,6 +32,22 @@ else
 
     # install project dependency
     cd /var/www/web && composer install --no-scripts --no-interaction && composer run-script --no-interaction post-create-project-cmd
+
+    chown -R www-data:www-data /var/www/web
+
+    case "$FRAMEWORK" in
+
+        'laravel')
+            echo 'use laravel config'
+            cat /root/server_config/laravel/nginx.conf > /etc/nginx/conf.d/default.conf
+            ;;
+
+        'thinkphp')
+            echo 'use thinkphp config'
+            cat /root/server_config/thinkphp/nginx.conf > /etc/nginx/conf.d/default.conf
+            ;;
+    esac
+
 fi
 
 exec "$@"
