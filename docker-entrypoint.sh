@@ -35,7 +35,7 @@ else
 
     chown -R www-data:www-data /var/www/web
 
-    case "$FRAMEWORK" in
+    case "${FRAMEWORK,,}" in
 
         'laravel')
             echo 'use laravel config'
