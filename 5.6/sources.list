@@ -1,0 +1,6 @@
+deb http://mirrors.zju.edu.cn/debian/ jessie main non-free contrib
+deb http://mirrors.zju.edu.cn/debian/ jessie-updates main non-free contrib
+deb http://mirrors.zju.edu.cn/debian-security/ jessie/updates main non-free contrib
+deb-src http://mirrors.zju.edu.cn/debian/ jessie main non-free contrib
+deb-src http://mirrors.zju.edu.cn/debian/ jessie-updates main non-free contrib
+deb-src http://mirrors.zju.edu.cn/debian-security/ jessie/updates main non-free contrib
