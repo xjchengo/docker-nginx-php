@@ -22,18 +22,18 @@ if [ "$FRAMEWORK" = "reverse_proxy" ]; then
     cat /root/server_config/reverse_proxy/nginx.conf > /etc/nginx/conf.d/default.conf
 else
     # git clone
-    if [ -z "$REPOSITORY_URL" ]; then
+    if [ -n "$REPOSITORY_URL" ]; then
         # todo: check repository url start with https
+        cd /var/www && git clone "$REPOSITORY_URL" web
 
-        echo >&2 'error: set REPOSITORY_URL please'
-        exit 1
+        if [ -e "/var/www/web/composer.json" ]; then
+            # install project dependency
+            cd /var/www/web && composer install --no-scripts --no-interaction && composer run-script --no-interaction post-create-project-cmd
+        fi
+
+        chown -R www-data:www-data /var/www/web
     fi
-    cd /var/www && git clone "$REPOSITORY_URL" web
-
-    # install project dependency
-    cd /var/www/web && composer install --no-scripts --no-interaction && composer run-script --no-interaction post-create-project-cmd
-
-    chown -R www-data:www-data /var/www/web
+    
 
     case "${FRAMEWORK,,}" in
 

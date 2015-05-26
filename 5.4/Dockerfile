@@ -32,12 +32,13 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
     && docker-php-ext-install gd \
     && docker-php-ext-install mbstring \
-    && docker-php-ext-install pdo_mysql
+    && docker-php-ext-install pdo_mysql \
+    && docker-php-ext-install zip
 
 RUN curl -sS https://getcomposer.org/installer | php && \
     mv composer.phar /usr/local/bin/composer
 
-RUN composer global require xjchen/alauda:*@dev
+RUN composer global require xjchen/alauda:*@dev -vvv
 ENV PATH /root/.composer/vendor/bin:$PATH
 
 COPY config /root/server_config
