@@ -23,12 +23,14 @@ This image is for hosting php project that provides you a wonderful deploying en
 The following environment variables are also honored for configuring your xjchengo/php instance:
 
 -	`-e FRAMEWORK=laravel|thinkphp|reverse_proxy|others` (defaults to laravel. The image is tailored for thinkphp and laravel now. If your use other framework , you may edit nginx configuration a little.) 
--	`-e DB_HOST=...` (defaults to the IP and port of the linked `mysql` container)
--
-
+-	`-e REPOSITORY_URL=...` (if you specify one, it will be cloned it to `/var/www/web`. Use git repository url starting with https please. Dependency installation tends to go wrong in China, so take care of dependency yourself.)
+-	`-e DB_HOST=...` (defaults to the IP of the linked `mysql` container)
+-	`-e DB_PORT=...` (defaults to 3306)
+-	`-e DB_NAME=...` (will be created if not exists)
+-	`-e DB_USER=...` (defaults to "root")
+-	`-e DB_PASSWORD=...` (defaults to the value of the `MYSQL_ROOT_PASSWORD` environment variable from the linked `mysql` container or empty)
 
 # Tips
 
--	Used as reverse proxy server
--	
+-	Used as reverse proxy server. Sometimes when you are developing a project, your friend wants to see your amazing project. Because of not in same LAN, you have to say sorry. With this image, you can run it with `-e FRAMEWORK=reverse_proxy` on alauda. Then `ssh -R 8080:localhost:80 -p yourport root@alaudahostnameforyou` on your local machine. Now your project can access by http://alaudahostnameforyou .
 
