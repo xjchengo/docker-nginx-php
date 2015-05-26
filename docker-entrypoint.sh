@@ -26,10 +26,11 @@ else
         # todo: check repository url start with https
         cd /var/www && git clone "$REPOSITORY_URL" web
 
-        if [ -e "/var/www/web/composer.json" ]; then
-            # install project dependency
-            cd /var/www/web && composer install --no-scripts --no-interaction && composer run-script --no-interaction post-create-project-cmd
-        fi
+        # to slow and tend to fail in alauda, so let user install dependency manually
+        # if [ -e "/var/www/web/composer.json" ]; then
+        #     # install project dependency
+        #     cd /var/www/web && composer install --no-scripts --no-interaction && composer run-script --no-interaction post-create-project-cmd
+        # fi
 
         chown -R www-data:www-data /var/www/web
     fi
@@ -45,6 +46,10 @@ else
         'thinkphp')
             echo 'use thinkphp config'
             cat /root/server_config/thinkphp/nginx.conf > /etc/nginx/conf.d/default.conf
+            ;;
+        *)
+            echo 'maybe you need to refine /etc/nginx/conf.d/default.conf'
+            cat /root/server_config/laravel/nginx.conf > /etc/nginx/conf.d/default.conf
             ;;
     esac
 
@@ -92,6 +97,5 @@ else
     fi
 
 fi
-
 
 exec "$@"
