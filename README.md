@@ -18,7 +18,7 @@ This image is for hosting php project that provides you a wonderful deploying en
 
 # How to use this image
 
-	docker run --name some-php --link some-mysql:mysql -e ROOT_PASSWORD=foo -d index.alauda.cn/xjchengo/php
+	docker run --name some-php --link some-mysql:mysql -e ROOT_PASSWORD=foo -d -P index.alauda.cn/xjchengo/php
 	
 The following environment variables are also honored for configuring your xjchengo/php instance:
 
