@@ -24,3 +24,10 @@
 
 Alauda命令行客户端[`xjchengo/alauda`](https://github.com/xjchengo/alauda-php)面向所有 Alauda 用户，安装后可以在命令行中查看账号信息、管理自己的仓库、服务及服务实例。![命令列表](http://7xjbct.com2.z0.glb.qiniucdn.com/cmd.png) 其中最有特色的功能为 up 和 service:create 。 up 命令秒秒钟为你在 Alauda 上部署[`index.alauda.cn/xjchengo/php` 镜像](https://github.com/xjchengo/docker-nginx-php)，使用场景为，项目需要阶段性部署时， up 一下，一切已在 Alauda 上。service:create 命令兼容 docker-compose 的配置，可直接读取 docker-compose.yml 文件，然后在 Alauda 上创建相应的服务。使用场景为：本地测试通过 docker-compose ，项目部署时 alauda service:create ，无缝切换。 
 
+## 参赛心得
+
+使用过 Alauda 和 DaoCloud 两家的服务，就我的使用感受，对比如下：
+
+- 开放性。 Alauda 非常开放，不限制 expose 的端口，有 api。DaoCloud目前只支持 HTTP 端口，无开放 api。
+- 镜像构建稳定性。 Alauda 上构建镜像时，偶尔会出现 Waiting... ，并持续很长世间。并且日志经常显示从 alauda 自己的仓库中 pull 镜像时失败，转向 index.docker.com 去 pull。既然是面向中国用户，服务器时区改为中国的时区更好。
+- Web 界面的美观性和易用性不足，与 DaoCloud 一比，顿时占了下风。最明显的莫过于加速器的使用帮助，DaoCloud 好太多，加速器又是当前国内大部分 Docker 用户最核心的需求，有必要把加速器的使用帮助先完善。
