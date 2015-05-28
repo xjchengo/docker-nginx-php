@@ -14,3 +14,8 @@
 [`index.alauda.cn/xjchengo/php` 镜像](https://github.com/xjchengo/docker-nginx-php)主要面向 PHP 开发者，旨在使 PHP 开发者更方便的使用 Docker 搭建开发环境。它有如下特点：
 
 - 为 PHP 框架而生。不同于其它镜像，本镜像的目标是内置最火的十套 PHP 框架的网站配置文件，让使用这十套框架的 PHP 用户不再担心环境问题，同时支持自定义配置，方便其它框架使用者使用。目前已支持国内主流框架 Thinkphp 和 国外主流框架 Laravel。不同框架对服务器的要求主要区别在 HTTP Server(Nging or Apache) 的配置和 PHP 模块的依赖。本镜像设置了 config 目录，用于存放不同框架的 HTTP Server 配置，同时本身是基于[官方 `php` 镜像](https://github.com/docker-library/docs/tree/master/php), 可以很方便的安装新的PHP 模块。
+- 支持设置 Git 仓库地址，可以自动从 Git 仓库安装项目
+- 使用 Composer 管理的项目自动安装依赖（由于国内通过 Composer 安装依赖经常发生失败的情况，已注释掉入口文件中自动安装依赖的部分）
+- 可以通过 SSH 访问。由于 alauda 等部署平台的局限性，如果服务不能通过 SSH 访问将很难管理。
+- 多版本 PHP 支持。目前支持 `PHP 5.4, 5.5, 5.6`，能满足绝大部分 PHP 环境的需求。
+- 已替换 apt 软件源内国内软件源，软件安装、更新速度更快
