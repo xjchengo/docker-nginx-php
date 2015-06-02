@@ -1,8 +1,8 @@
 # Supported tags and respective `Dockerfile` links
 
--	[`4.4`](https://github.com/xjchengo/docker-nginx-php/blob/master/5.4/Dockerfile)
--	[`4.5`](https://github.com/xjchengo/docker-nginx-php/blob/master/5.5/Dockerfile)
--	[`4.6`, `latest`](https://github.com/xjchengo/docker-nginx-php/blob/master/5.6/Dockerfile)
+-	[`5.4`](https://github.com/xjchengo/docker-nginx-php/blob/master/5.4/Dockerfile)
+-	[`5.5`](https://github.com/xjchengo/docker-nginx-php/blob/master/5.5/Dockerfile)
+-	[`5.6`, `latest`](https://github.com/xjchengo/docker-nginx-php/blob/master/5.6/Dockerfile)
 
 For more information about this image and its history, please head to [`xjchengo/docker-nginx-php` GitHub repo](https://github.com/xjchengo/docker-nginx-php).
 
